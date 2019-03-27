@@ -21,6 +21,7 @@ public class KSP {
         ArrayList<Integer> sort = new ArrayList<>();
         for(int i = 0; i < number_of_items; i++){
             //System.out.println(items_rate[i]);
+            ksp[i] = 0;
             int paste_index = i;
             boolean stop = false;
             for(int j = 0; j < i && !stop; j++){
@@ -31,10 +32,17 @@ public class KSP {
             }
             sort.add(paste_index, i);
         }
-        for(Integer i: sort){
-            System.out.println(items_rate[i]);
+        double akt_backpack = backpack_cap;
+        int i = 0;
+        while(akt_backpack > 0 && i < number_of_items){
+            double w_temp = weights[sort.get(i)];
+            if(akt_backpack - w_temp >= 0){
+                akt_backpack -= w_temp;
+                ksp[sort.get(i)] = 1;
+            }
+            //System.out.println(akt_backpack);
+            i++;
         }
-        System.out.println();
         os.ustaw_ksp(ksp);
     }
 }
