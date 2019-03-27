@@ -21,7 +21,7 @@ public class Starter {
         TTP ttp;
         Loader loader = new Loader("student\\medium_0.ttp");
         ttp = new TTP(loader.distance_matrix, loader.capacity, loader.item_values, loader.item_weights, loader.min_v, loader.max_v);
-        KSP ksp = new KSP(loader.capacity, loader.item_weights, loader.item_values, loader.number_of_items);
+        KSP ksp = new KSP(loader.capacity, loader.item_weights, loader.item_values,loader.assigned_node, loader.number_of_items);
         Genetyk algorytm_genetyczny = new Genetyk(loader, ttp, ksp, pop_size, gen, px, pm, tour);
 
     }

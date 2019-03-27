@@ -7,6 +7,8 @@ public class Genetyk {
         MaszynaLosujaca maszyna = new MaszynaLosujaca(loader.dimension);
         ArrayList<Osobnik> generacja = new ArrayList<>();
 
+
+
         for(int i = 0; i < pop_size; i++){
             int tab[] = new int[loader.dimension];
             for(int j = 0; j < loader.dimension; j++){
@@ -15,9 +17,11 @@ public class Genetyk {
             }
             Osobnik os = new Osobnik(tab);
             ksp.wybierz(os);
+            ttp.find_benefit(os);
             generacja.add(os);
             //System.out.println();
             maszyna.resetuj();
         }
+
     }
 }

@@ -5,7 +5,7 @@ public class MaszynaLosujaca {
     ArrayList<Integer> backup_miast;
     public MaszynaLosujaca(int liczba_miast){
         miasta = new ArrayList<>();
-        for(int i = 0; i < liczba_miast; i++){
+        for(int i = 1; i <= liczba_miast; i++){
             miasta.add(i);
         }
         backup_miast = new ArrayList<>(miasta);

@@ -6,7 +6,7 @@ public class KSP {
     int[] values;
     int number_of_items;
     double items_rate[];
-    public KSP(double backpack_cap, double[] weights, int[] values, int noi){
+    public KSP(double backpack_cap, double[] weights, int[] values, int[] asssigned_town, int noi){
         this.backpack_cap = backpack_cap;
         this.weights = weights;
         this.values = values;
