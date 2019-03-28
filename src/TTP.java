@@ -31,12 +31,15 @@ public class TTP {
         }
         total_time += calculate_time(distance_matrix[x[x.length - 1] - 1][x[0] - 1] , weight_current);
         benefit = value_current - total_time;
-        System.out.println("total benefit: " + benefit);
+        //System.out.println("total benefit: " + benefit);
 
         return benefit;
     }
     void find_benefit(Osobnik os){
-        os.ustaw_benefit(find_benefit(os.tsp, os.ksp));
+        os.ustaw_benefit( find_benefit(os.tsp, os.ksp));
+    }
+    void find_pov_benefit(Osobnik os){
+        os.ustaw_benefit( Math.pow(Math.E, find_benefit(os.tsp, os.ksp)));
     }
     double calculate_time(double distance, double w_c){
         double v = v_max - ((v_max - v_min) * w_c / backpack_capitacity);

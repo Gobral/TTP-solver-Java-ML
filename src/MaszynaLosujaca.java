@@ -17,4 +17,13 @@ public class MaszynaLosujaca {
     public void resetuj(){
         miasta = new ArrayList<>(backup_miast);
     }
+
+    public ArrayList<Osobnik> cross(ArrayList<Osobnik> osobniki, double px){
+
+        return osobniki;
+    }
+    public ArrayList<Osobnik> mutate(ArrayList<Osobnik> osobniki, double pm){
+
+        return osobniki;
+    }
 }

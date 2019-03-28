@@ -3,24 +3,26 @@ import java.util.Scanner;
 
 public class Genetyk {
     public Genetyk(Loader loader, TTP ttp, KSP ksp, int pop_size, int gen, double px, double pm, int tour){
-        System.out.println("Siema siema");
         MaszynaLosujaca maszyna = new MaszynaLosujaca(loader.dimension);
         ArrayList<Osobnik> generacja = new ArrayList<>();
 
-
-
-        for(int i = 0; i < pop_size; i++){
-            int tab[] = new int[loader.dimension];
-            for(int j = 0; j < loader.dimension; j++){
-                tab[j] = maszyna.losuj_miasto();
-                //System.out.print(tab[j] + ", ");
+        for(int  g = 0; g < gen; g++) {
+            for (int i = 0; i < pop_size; i++) {
+                int tab[] = new int[loader.dimension];
+                for (int j = 0; j < loader.dimension; j++) {
+                    tab[j] = maszyna.losuj_miasto();
+                    //System.out.print(tab[j] + ", ");
+                }
+                Osobnik os = new Osobnik(tab);
+                ksp.wybierz(os);
+                ttp.find_benefit(os);
+                generacja.add(os);
+                //System.out.println();
+                maszyna.resetuj();
             }
-            Osobnik os = new Osobnik(tab);
-            ksp.wybierz(os);
-            ttp.find_benefit(os);
-            generacja.add(os);
-            //System.out.println();
-            maszyna.resetuj();
+
+            generacja = maszyna.cross(generacja, px);
+            generacja = maszyna.mutate(generacja, pm);
         }
 
     }
