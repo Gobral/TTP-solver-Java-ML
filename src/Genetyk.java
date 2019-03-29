@@ -22,10 +22,9 @@ public class Genetyk {
                 ksp.wybierz(os);
                 ttp.find_benefit(os);
             }
-
+            generacja = maszyna.ruletka(generacja);
             generacja = maszyna.cross(generacja, px);
             generacja = maszyna.mutate(generacja, pm);
-            generacja = maszyna.ruletka(generacja);
         }
 
     }

@@ -19,11 +19,59 @@ public class MaszynaLosujaca {
     }
 
     public ArrayList<Osobnik> cross(ArrayList<Osobnik> osobniki, double px){
+        ArrayList<Osobnik> ret = new ArrayList<>();
+        int pop = osobniki.size();
+        for(int i = 0; i < pop/2; i++){
 
-        return osobniki;
+                double los = Math.random();
+                Osobnik o1 = new Osobnik(osobniki.get(i));
+                Osobnik o2 = new Osobnik(osobniki.get(i * 2));
+                int w= o1.tsp.length;
+                //System.out.println("Przed 1: " + o1.tsp_to_string());
+                //System.out.println("Przed 2: " + o2.tsp_to_string());
+
+                if(los < px && o1.benefit != o2.benefit){
+
+                    boolean rozpocznij = false;
+                    int startn = 0;
+                    int next_swap = 0;
+                    int stara = 0;
+                    boolean stop = false;
+                    for(int k = 0; k < w && !stop; k++){
+
+                        if(rozpocznij){
+                            if(o1.tsp[k] == next_swap && stara != k){
+                                //System.out.println(k + " " + o1.tsp[k] + " " + o2.tsp[k] + " n: " + next_swap + " s: " + startn);
+                                o1.tsp[k] = o2.tsp[k];
+                                o2.tsp[k] = next_swap;
+                                next_swap = o1.tsp[k];
+                                if(next_swap == startn){
+                                    stop = true;
+                                }
+                                stara = k;
+                                k = 0;
+                            }
+                        }
+                        else if(o1.tsp[k] != o2.tsp[k]){
+                            rozpocznij = true;
+                            startn = o1.tsp[k];
+                            next_swap = o2.tsp[k];
+                            o2.tsp[k] = o1.tsp[k];
+                            o1.tsp[k] = next_swap;
+                            stara = k;
+                        }
+                    }
+
+                    //System.out.println("Po 1: " + o1.tsp_to_string());
+                    //System.out.println("Po 2: " + o2.tsp_to_string());
+                }
+                ret.add(o1);
+                ret.add(o2);
+
+        }
+        return ret;
     }
     public ArrayList<Osobnik> mutate(ArrayList<Osobnik> osobniki, double pm){
-
         return osobniki;
     }
     public ArrayList<Osobnik> ruletka(ArrayList<Osobnik> osobniki){
@@ -52,11 +100,11 @@ public class MaszynaLosujaca {
                 if(pol > krecenie){
                     stop = true;
                     ret.add(osobniki.get(j));
-                    System.out.println(min_fit + ", " + osobniki.get(j).benefit);
+                    //System.out.println(min_fit + ", " + osobniki.get(j).benefit);
                 }
             }
         }
-        System.out.println("Populacja: "+  ret.size());
+        //System.out.println("Populacja: "+  ret.size());
 
 
         return ret;
