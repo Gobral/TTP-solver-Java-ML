@@ -72,6 +72,18 @@ public class MaszynaLosujaca {
         return ret;
     }
     public ArrayList<Osobnik> mutate(ArrayList<Osobnik> osobniki, double pm){
+        for(Osobnik os: osobniki){
+            double los = Math.random();
+            if(los < pm) {
+                int poz1 = (int) (Math.random() * os.tsp.length);
+                int poz2 = (int) (Math.random() * os.tsp.length);
+                int temp = os.tsp[poz1];
+                //System.out.println(poz1 + " " + poz2 + " " + os.tsp_to_string());
+                os.tsp[poz1] = os.tsp[poz2];
+                os.tsp[poz2] = temp;
+                //System.out.println(os.tsp_to_string());
+            }
+        }
         return osobniki;
     }
     public ArrayList<Osobnik> ruletka(ArrayList<Osobnik> osobniki){
