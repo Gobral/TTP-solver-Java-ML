@@ -46,9 +46,9 @@ public class Genetyk {
                 srednia /= pop_size;
 
                 printWriter.println(g + ", " + max_local + ", " + srednia + ", " +min_local);
-                generacja = maszyna.ruletka(generacja);
-                generacja = maszyna.cross(generacja, px);
-                generacja = maszyna.mutate(generacja, pm);
+                generacja = new ArrayList<>(maszyna.ruletka(generacja));
+                generacja = new ArrayList<>(maszyna.cross(generacja, px));
+                generacja = new ArrayList<>(maszyna.mutate(generacja, pm));
             }
             printWriter.close();
 

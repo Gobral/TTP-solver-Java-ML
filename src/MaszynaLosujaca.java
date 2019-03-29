@@ -19,6 +19,7 @@ public class MaszynaLosujaca {
     }
 
     public ArrayList<Osobnik> cross(ArrayList<Osobnik> osobniki, double px){
+        System.out.println("krzyzowanie: " + osobniki.size());
         ArrayList<Osobnik> ret = new ArrayList<>();
         int pop = osobniki.size();
         for(int i = 0; i < pop/2; i++){
@@ -72,6 +73,7 @@ public class MaszynaLosujaca {
         return ret;
     }
     public ArrayList<Osobnik> mutate(ArrayList<Osobnik> osobniki, double pm){
+        System.out.println("mutacja: " + osobniki.size());
         for(Osobnik os: osobniki){
             double los = Math.random();
             if(los < pm) {
@@ -88,7 +90,7 @@ public class MaszynaLosujaca {
     }
     public ArrayList<Osobnik> ruletka(ArrayList<Osobnik> osobniki){
         ArrayList<Osobnik> ret = new ArrayList<>();
-        //System.out.println(osobniki.size());
+        System.out.println("ruletka: " + osobniki.size());
         int pop = osobniki.size();
         double suma_fit = 0;
         double min_fit = osobniki.get(0).benefit;
@@ -117,6 +119,7 @@ public class MaszynaLosujaca {
                 }
             }
         }
+        System.out.println("ruletka po: " + osobniki.size());
         //System.out.println("Populacja: "+  ret.size());
 
 
