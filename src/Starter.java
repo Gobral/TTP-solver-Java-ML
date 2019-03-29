@@ -6,9 +6,9 @@ public class Starter {
 
         Scanner sc= new Scanner(System.in);
         int pop_size = 100;
-        int gen = 100;
+        int gen = 1000;
         double px= 0.7;
-        double pm = 0.1;
+        double pm = 0;
         int tour = 5;
         /*
         pop_size = sc.nextInt();

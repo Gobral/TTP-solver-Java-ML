@@ -88,6 +88,7 @@ public class MaszynaLosujaca {
     }
     public ArrayList<Osobnik> ruletka(ArrayList<Osobnik> osobniki){
         ArrayList<Osobnik> ret = new ArrayList<>();
+        //System.out.println(osobniki.size());
         int pop = osobniki.size();
         double suma_fit = 0;
         double min_fit = osobniki.get(0).benefit;
