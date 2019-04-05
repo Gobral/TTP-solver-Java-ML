@@ -44,7 +44,8 @@ public class Genetyk {
 
             ArrayList<Osobnik> temp = new ArrayList<>(generacja);
             generacja.clear();
-            generacja = new ArrayList<>(maszyna.turniej(temp,tour));
+            //generacja = new ArrayList<>(maszyna.turniej(temp,tour));
+            generacja = new ArrayList<>(maszyna.ruletka(temp));
             generacja = new ArrayList<>(maszyna.cross(generacja, px));
             maszyna.mutate(generacja, pm);
 
